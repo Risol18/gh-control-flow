@@ -32,4 +32,4 @@ jobs:
       - name: Set output
         id: set-result
         run: |
-          echo "::set-output name=step-result::SUCCESS!"
+          echo "::set-output name=step-result::SUCCESS!" # this command is deprecated but still works, the new way is to use echo "step-result=SUCCESS!" >> $GITHUB_OUTPUT
