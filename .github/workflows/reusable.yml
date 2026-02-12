@@ -3,7 +3,9 @@ on:
   workflow_call:
     inputs:
       artifact-name:
-        required: true
+        description: Name of the artifact to deploy
+        required: false
+        default: dist
         type: string
 jobs:
   deploy:
@@ -13,5 +15,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: ${{ inputs.artifact-name }}
+      - name: List files
+        run: ls
       - name: Ouput information
         run: echo "Deploying & uploading to production..."
