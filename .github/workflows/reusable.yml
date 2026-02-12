@@ -11,10 +11,10 @@ on:
       result:
         description: Information about the deployment
         value: ${{ jobs.deploy.outputs.outcome }}
-    secrets:
-      SOME-SECRET:
-        description: Secret example for deployment
-        required: true
+    #secrets:
+    #  SOME-SECRET:
+    #    description: Secret example for deployment
+    #    required: true
 jobs:
   deploy:
     outputs:
