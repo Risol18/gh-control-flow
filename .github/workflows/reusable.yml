@@ -7,8 +7,18 @@ on:
         required: false
         default: dist
         type: string
+    outputs:
+      result:
+        description: Information about the deployment
+        value: ${{ jobs.deploy.outputs.outcome }}
+    secrets:
+      SOME-SECRET:
+        description: Secret example for deployment
+        required: true
 jobs:
   deploy:
+    outputs:
+      outcome: ${{ steps.set-result.outputs.step-result }}
     runs-on: ubuntu-latest
     steps:
       - name: Get code
@@ -19,3 +29,7 @@ jobs:
         run: ls
       - name: Ouput information
         run: echo "Deploying & uploading to production..."
+      - name: Set output
+        id: set-result
+        run: |
+          echo "::set-output name=step-result::SUCCESS!"
